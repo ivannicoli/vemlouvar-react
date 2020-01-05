@@ -14,9 +14,7 @@ class App extends React.Component {
   }
   render() {
     return (
-
-
-      <Container fluid="true">
+      <Container fluid>
 
         <Row>
           <Col>
@@ -59,7 +57,7 @@ class App extends React.Component {
         </Row>
 
 
-        <Row style={{ display: "none" }}>
+        <Row style={{display: "none"}}>
           <Col>
             <InputGroup className="mb-3">
               <InputGroup.Prepend>
@@ -102,7 +100,7 @@ class App extends React.Component {
         </Row>
 
 
-        <Row>
+        <Row className="d-flex flex-column flex-grow-1">
           <Col>
             <Form.Label>Missa</Form.Label>
           </Col>
