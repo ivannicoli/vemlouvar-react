@@ -40,7 +40,7 @@ class App extends React.Component {
                     <NavDropdown.Item href="#action/3.4">Sobre</NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
-                <Form inline style={{display: "none"}}>
+                <Form inline style={{ display: "none" }}>
                   <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                   <Button variant="outline-success">Search</Button>
                 </Form>
@@ -66,7 +66,7 @@ class App extends React.Component {
         </Row>
 
 
-        <Row style={{display: "none"}}>
+        <Row style={{ display: "none" }}>
           <Col>
             <InputGroup className="mb-3">
               <InputGroup.Prepend>
@@ -143,7 +143,12 @@ class App extends React.Component {
             </ButtonToolbar>
 
           </Col>
-
+        </Row>
+        
+        <Row >
+          <Col>
+            <Form.Label>&nbsp;</Form.Label>
+          </Col>
         </Row>
       </Container >
     );
