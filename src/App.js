@@ -1,11 +1,10 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import {
   Form, Dropdown, DropdownButton,
   FormControl, InputGroup, Col,
   Row, Container, Navbar, Nav,
-  NavDropdown
+  NavDropdown, ButtonToolbar, ButtonGroup,
+  Button
 } from 'react-bootstrap';
 
 class App extends React.Component {
@@ -138,19 +137,12 @@ class App extends React.Component {
 
         <Row>
           <Col>
-          
+
             <ButtonToolbar>
-              <Button variant="primary">Primary</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="success">Success</Button>
-              <Button variant="warning">Warning</Button>
-              <Button variant="danger">Danger</Button>
-              <Button variant="info">Info</Button>
-              <Button variant="light">Light</Button>
-              <Button variant="dark">Dark</Button>
-              <Button variant="link">Link</Button>
+              <Button className="mr-2" variant="outline-info">Gerar Apresentação</Button>
+              <Button className="mr-2" variant="outline-success">Gerar Cifra</Button>
             </ButtonToolbar>
-          
+
           </Col>
 
         </Row>
