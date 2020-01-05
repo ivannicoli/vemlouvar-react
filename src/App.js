@@ -111,28 +111,20 @@ class App extends React.Component {
 
         <Row>
           <Col sm>
-            <InputGroup>
-              <InputGroup.Prepend>
-                <InputGroup.Text>Apresentação</InputGroup.Text>
-              </InputGroup.Prepend>
-              <FormControl as="textarea" aria-label="With textarea" rows="5" />
-            </InputGroup>
+
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+              <Form.Label>Cifra</Form.Label>
+              <Form.Control as="textarea" rows="5" />
+            </Form.Group>
           </Col>
           <Col sm>
-            <InputGroup>
-              <InputGroup.Prepend>
-                <InputGroup.Text>Cifra</InputGroup.Text>
-              </InputGroup.Prepend>
-              <FormControl as="textarea" aria-label="With textarea" rows="5" />
-            </InputGroup>
+
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+              <Form.Label>Apresentação</Form.Label>
+              <Form.Control as="textarea" rows="5" />
+            </Form.Group>
           </Col>
 
-        </Row>
-
-        <Row>
-          <Col>
-            <Form.Label>&nbsp;</Form.Label>
-          </Col>
         </Row>
 
         <Row>
