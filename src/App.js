@@ -110,7 +110,7 @@ class App extends React.Component {
 
 
         <Row>
-          <Col>
+          <Col sm>
             <InputGroup>
               <InputGroup.Prepend>
                 <InputGroup.Text>Apresentação</InputGroup.Text>
@@ -118,7 +118,7 @@ class App extends React.Component {
               <FormControl as="textarea" aria-label="With textarea" rows="5" />
             </InputGroup>
           </Col>
-          <Col>
+          <Col sm>
             <InputGroup>
               <InputGroup.Prepend>
                 <InputGroup.Text>Cifra</InputGroup.Text>
