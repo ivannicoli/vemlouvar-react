@@ -1,0 +1,32 @@
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+ol.musicas li.placeholder {
+    position: relative;
+    /** More li styles **/
+}
+ol.musicas li.placeholder:before {
+    position: absolute;
+    /** Define arrowhead **/
+  }
+
+ol.musicas li {
+    cursor: move;
+    padding: .5em .5em .5em .5em;
+    background: #fff;
+    border: 1px solid #ccc;
+    margin: .25em 0;
+    border-radius: .25em;
+}
+
+ol.musicas {
+    list-style-type: none;
+    padding-left: 0em; 
+}
