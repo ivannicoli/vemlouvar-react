@@ -14,8 +14,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <Container fluid>
-
+      <Container fluid className="d-flex h-100 flex-column">
         <Row>
           <Col>
             <Navbar expand="lg">
@@ -100,7 +99,7 @@ class App extends React.Component {
         </Row>
 
 
-        <Row className="d-flex flex-column flex-grow-1">
+        <Row className="flex-fill d-flex justify-content-start">
           <Col>
             <Form.Label>Missa</Form.Label>
           </Col>
