@@ -7,11 +7,15 @@ import {
   Button
 } from 'react-bootstrap';
 
+import './themes/bootstrap.min-darkly.css';
+
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {}
   }
+
   render() {
     return (
       <Container fluid className="d-flex h-100 flex-column">
@@ -29,8 +33,14 @@ class App extends React.Component {
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#action/3.4">Sobre</NavDropdown.Item>
                   </NavDropdown>
+                  <NavDropdown title="Themes" id="basic-nav-dropdown">
+                    <NavDropdown.Item href="#action/3.1">Cadastro Músicas</NavDropdown.Item>
+                    <NavDropdown.Item href="#action/3.2">Missas</NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item href="#action/3.4">Sobre</NavDropdown.Item>
+                  </NavDropdown>
                 </Nav>
-                <Form inline>
+                <Form inline style={{display: "none"}}>
                   <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                   <Button variant="outline-success">Search</Button>
                 </Form>
