@@ -7,7 +7,7 @@ import {
   Button
 } from 'react-bootstrap';
 
-import './themes/bootstrap.min-darkly.css';
+//import './themes/bootstrap.min-darkly.css';
 
 
 class App extends React.Component {
