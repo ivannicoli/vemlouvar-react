@@ -6,8 +6,9 @@ import {
   NavDropdown, ButtonToolbar, ButtonGroup,
   Button
 } from 'react-bootstrap';
+import AlgoliaSearch from './js/algolia3/App';
 
-//import './themes/bootstrap.min-darkly.css';
+import './themes/bootstrap.min-darkly.css';
 
 
 class App extends React.Component {
@@ -40,10 +41,10 @@ class App extends React.Component {
                     <NavDropdown.Item href="#action/3.4">Sobre</NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
-                <Form inline style={{ display: "none" }}>
+                {/* <Form inline>
                   <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                   <Button variant="outline-success">Search</Button>
-                </Form>
+                </Form> */}
               </Navbar.Collapse>
             </Navbar>
           </Col>
@@ -66,7 +67,7 @@ class App extends React.Component {
         </Row>
 
 
-        <Row style={{ display: "none" }}>
+        {/* <Row >
           <Col>
             <InputGroup className="mb-3">
               <InputGroup.Prepend>
@@ -106,14 +107,17 @@ class App extends React.Component {
             </InputGroup>
           </Col>
 
-        </Row>
+        </Row> */}
 
 
-        <Row className="flex-fill d-flex justify-content-start">
+        {/* <Row className="flex-fill d-flex justify-content-start" >
           <Col>
             <Form.Label>Missa</Form.Label>
           </Col>
-        </Row>
+        </Row> */}
+
+        
+        <AlgoliaSearch/>
 
 
         <Row>

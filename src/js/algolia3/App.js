@@ -13,6 +13,11 @@ import {
 import PropTypes from 'prop-types';
 import './App.css';
 
+
+import {
+  Row, Col
+} from 'react-bootstrap';
+
 const searchClient = algoliasearch(
   // 'B1G2GM9NG0',
   // 'aadef574be1f9252bb48d4ea09b5cfe5'
@@ -24,19 +29,20 @@ class App extends Component {
   render() {
     return (
       <div className="ais-InstantSearch">
-        <h1>VemLouvar Algolia</h1>
-        <InstantSearch indexName="musicas" searchClient={searchClient}>
-          <div className="left-panel">
-            <ClearRefinements />
-            <h2>Momento</h2>
-            <RefinementList attribute="momento" />
-            <Configure hitsPerPage={8} />
-          </div>
-          <div className="right-panel">
-            <SearchBox />
-            <Hits hitComponent={Hit} />
-            <Pagination />
-          </div>
+        <InstantSearch indexName="musicas" searchClient={searchClient} >
+          <Row>
+            <Col sm={false}>
+              <ClearRefinements />
+              <h2>Momento</h2>
+              <RefinementList attribute="momento" />
+              <Configure hitsPerPage={8} />
+            </Col>
+            <Col >
+              <SearchBox />
+              <Hits hitComponent={Hit} />
+              <Pagination />
+            </Col>
+          </Row>
         </InstantSearch>
       </div>
     );
