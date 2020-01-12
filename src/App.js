@@ -50,7 +50,7 @@ class App extends React.Component {
           </Col>
 
         </Row>
-        <Row>
+        {/* <Row>
           <Col>
             <InputGroup className="mb-3">
               <InputGroup.Prepend>
@@ -64,7 +64,7 @@ class App extends React.Component {
             </InputGroup>
           </Col>
 
-        </Row>
+        </Row> */}
 
 
         {/* <Row >

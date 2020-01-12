@@ -15,7 +15,7 @@ import './App.css';
 
 
 import {
-  Row, Col
+  Row, Col, Container
 } from 'react-bootstrap';
 
 const searchClient = algoliasearch(
@@ -30,19 +30,21 @@ class App extends Component {
     return (
       <div className="ais-InstantSearch">
         <InstantSearch indexName="musicas" searchClient={searchClient} >
-          <Row>
-            <Col sm={false}>
-              <ClearRefinements />
-              <h2>Momento</h2>
-              <RefinementList attribute="momento" />
-              <Configure hitsPerPage={8} />
-            </Col>
-            <Col >
-              <SearchBox />
-              <Hits hitComponent={Hit} />
-              <Pagination />
-            </Col>
-          </Row>
+          <Container fluid className="d-flex h-100 flex-column">
+            <Row >
+              <Col sm={false}>
+                <ClearRefinements />
+                <h2>Momento</h2>
+                <RefinementList attribute="momento" />
+                <Configure hitsPerPage={8} />
+              </Col>
+              <Col >
+                <SearchBox />
+                <Hits hitComponent={Hit} />
+                <Pagination />
+              </Col>
+            </Row>
+          </Container>
         </InstantSearch>
       </div>
     );
