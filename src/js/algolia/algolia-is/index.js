@@ -11,7 +11,7 @@ import {
   Configure,
 } from 'react-instantsearch-dom';
 import PropTypes from 'prop-types';
-import './App.css';
+import './index.css';
 
 
 import {

@@ -6,7 +6,7 @@ import {
   NavDropdown, ButtonToolbar, ButtonGroup,
   Button
 } from 'react-bootstrap';
-import AlgoliaSearch from './js/algolia3/App';
+import AlgoliaSearch from './js/algolia/algolia-ac';
 
 import './themes/bootstrap.min-darkly.css';
 
