@@ -116,9 +116,50 @@ class App extends React.Component {
           </Col>
         </Row> */}
 
-        
-        <AlgoliaSearch/>
 
+        <AlgoliaSearch />
+        <table className="table table-hover table-striped table-bordered" id='tableSample' >
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Desc</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td>Id</td>
+              <td>Name</td>
+              <td>Desc</td>
+              <td>Options</td>
+            </tr>
+
+            <tr>
+              <td>Id</td>
+              <td>Name</td>
+              <td>Desc</td>
+              <td>Options</td>
+            </tr>
+
+            <tr>
+              <td>Id</td>
+              <td>Name</td>
+              <td>Desc</td>
+              <td>Options</td>
+            </tr>
+
+            <tr>
+              <td>Id</td>
+              <td>Name</td>
+              <td>Desc</td>
+              <td>Options</td>
+            </tr>
+
+
+          </tbody>
+        </table>
 
         <Row>
           <Col sm>
@@ -148,7 +189,7 @@ class App extends React.Component {
 
           </Col>
         </Row>
-        
+
         <Row >
           <Col>
             <Form.Label>&nbsp;</Form.Label>
