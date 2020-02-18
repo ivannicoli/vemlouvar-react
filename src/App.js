@@ -8,6 +8,8 @@ import {
 } from 'react-bootstrap';
 import AlgoliaSearch from './js/algolia/algolia-ac';
 
+import MaterialTable from "material-table";
+
 import './themes/bootstrap.min-darkly.css';
 
 
@@ -118,48 +120,24 @@ class App extends React.Component {
 
 
         <AlgoliaSearch />
-        <table className="table table-hover table-striped table-bordered" id='tableSample' >
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Desc</th>
-              <th>Options</th>
-            </tr>
-          </thead>
-          <tbody>
-
-            <tr>
-              <td>Id</td>
-              <td>Name</td>
-              <td>Desc</td>
-              <td>Options</td>
-            </tr>
-
-            <tr>
-              <td>Id</td>
-              <td>Name</td>
-              <td>Desc</td>
-              <td>Options</td>
-            </tr>
-
-            <tr>
-              <td>Id</td>
-              <td>Name</td>
-              <td>Desc</td>
-              <td>Options</td>
-            </tr>
-
-            <tr>
-              <td>Id</td>
-              <td>Name</td>
-              <td>Desc</td>
-              <td>Options</td>
-            </tr>
-
-
-          </tbody>
-        </table>
+        <div style={{ maxWidth: "100%" }}>
+          <MaterialTable
+            columns={[
+              { title: "Nome", field: "name" },
+              { title: "Sobrenome", field: "sobrenome" },
+              { title: "Aniversário", field: "birthYear", type: "numeric" },
+              {
+                title: "Cidade Natal",
+                field: "birthCity",
+                lookup: { 34: "Apucarana", 63: "Londrina" }
+              }
+            ]}
+            data={[
+              { name: "Ivan", surname: "Nicoli", birthYear: 1987, birthCity: 63 }
+            ]}
+            title="Demo Title"
+          />
+        </div>
 
         <Row>
           <Col sm>
