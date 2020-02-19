@@ -34,6 +34,10 @@ class App extends Component {
     this.setState({
       query: suggestion.name,
     });
+    this.props.addMusica({
+      nome: suggestion.nome,
+      momento: suggestion.momento
+    });
   };
 
   onSuggestionCleared = () => {

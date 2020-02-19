@@ -16,7 +16,18 @@ import './themes/bootstrap.min-darkly.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      musicas: []
+    }
+    this.addMusica.bind(this);
+  }
+
+  addMusica = m => {
+    var arrMusicas = this.state.musicas;
+    arrMusicas.push(m)
+    this.setState({
+      musicas: arrMusicas
+    })
   }
 
   render() {
@@ -119,23 +130,24 @@ class App extends React.Component {
         </Row> */}
 
 
-        <AlgoliaSearch />
+
+        <AlgoliaSearch addMusica={this.addMusica} />
         <div style={{ maxWidth: "100%" }}>
           <MaterialTable
             columns={[
-              { title: "Nome", field: "name" },
-              { title: "Sobrenome", field: "sobrenome" },
-              { title: "Aniversário", field: "birthYear", type: "numeric" },
+              { title: "Nome", field: "nome" },
+              { title: "Momento", field: "momento" }/*,
               {
                 title: "Cidade Natal",
                 field: "birthCity",
                 lookup: { 34: "Apucarana", 63: "Londrina" }
-              }
+              }*/
             ]}
-            data={[
+            /*data={[
               { name: "Ivan", surname: "Nicoli", birthYear: 1987, birthCity: 63 }
-            ]}
-            title="Demo Title"
+            ]}*/
+            data={this.state.musicas}
+            title="Missa"
           />
         </div>
 
