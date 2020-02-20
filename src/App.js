@@ -12,14 +12,38 @@ import MaterialTable from "material-table";
 
 import './themes/bootstrap.min-darkly.css';
 
+// import OfficeGenUtils from './js/utils/officegenUtils.js';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+
       musicas: []
     }
     this.addMusica.bind(this);
+  }
+
+  gerarDocX = () => {
+
+    alert("oi")
+
+  }
+
+  gerarPptX = () => {
+
+
+
+    // OfficeGenUtils.getpptx(async (pptx) => {
+    //   musicasGrid.forEach(m => {
+    //     m.tituloSlide = m.momento;
+    //     OfficeGenUtils.gerarSlideMusicaPptx(pptx, m)
+    //   });
+    // }, fileName)
+
+    alert("oi")
+
   }
 
   addMusica = m => {
@@ -54,98 +78,20 @@ class App extends React.Component {
                     <NavDropdown.Item href="#action/3.4">Sobre</NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
-                {/* <Form inline>
-                  <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                  <Button variant="outline-success">Search</Button>
-                </Form> */}
               </Navbar.Collapse>
             </Navbar>
           </Col>
 
         </Row>
-        {/* <Row>
-          <Col>
-            <InputGroup className="mb-3">
-              <InputGroup.Prepend>
-                <InputGroup.Text variant="success" id="basic-addon1">Algolia</InputGroup.Text>
-              </InputGroup.Prepend>
-              <FormControl
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-              />
-            </InputGroup>
-          </Col>
-
-        </Row> */}
-
-
-        {/* <Row >
-          <Col>
-            <InputGroup className="mb-3">
-              <InputGroup.Prepend>
-                <InputGroup.Text variant="success" id="basic-addon1">Momentos</InputGroup.Text>
-              </InputGroup.Prepend>
-              <DropdownButton
-                as={InputGroup.Prepend}
-                variant="outoline-secondary"
-                title="Dropdown"
-                id="input-group-dropdown-1"
-              >
-                <Dropdown.Item href="#">Action</Dropdown.Item>
-                <Dropdown.Item href="#">Another action</Dropdown.Item>
-                <Dropdown.Item href="#">Something else here</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item href="#">Separated link</Dropdown.Item>
-              </DropdownButton>
-            </InputGroup>
-          </Col>
-          <Col>
-            <InputGroup className="mb-3">
-              <InputGroup.Prepend>
-                <InputGroup.Text variant="success" id="basic-addon1">Músicas</InputGroup.Text>
-              </InputGroup.Prepend>
-              <DropdownButton
-                as={InputGroup.Prepend}
-                variant="outoline-secondary"
-                title="Dropdown"
-                id="input-group-dropdown-1"
-              >
-                <Dropdown.Item href="#">Action</Dropdown.Item>
-                <Dropdown.Item href="#">Another action</Dropdown.Item>
-                <Dropdown.Item href="#">Something else here</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item href="#">Separated link</Dropdown.Item>
-              </DropdownButton>
-            </InputGroup>
-          </Col>
-
-        </Row> */}
-
-
-        {/* <Row className="flex-fill d-flex justify-content-start" >
-          <Col>
-            <Form.Label>Missa</Form.Label>
-          </Col>
-        </Row> */}
-
-
 
         <AlgoliaSearch addMusica={this.addMusica} />
+
         <div style={{ maxWidth: "100%" }}>
           <MaterialTable
             columns={[
               { title: "Nome", field: "nome" },
-              { title: "Momento", field: "momento" }/*,
-              {
-                title: "Cidade Natal",
-                field: "birthCity",
-                lookup: { 34: "Apucarana", 63: "Londrina" }
-              }*/
+              { title: "Momento", field: "momento" }
             ]}
-            /*data={[
-              { name: "Ivan", surname: "Nicoli", birthYear: 1987, birthCity: 63 }
-            ]}*/
             data={this.state.musicas}
             title="Missa"
           />
@@ -173,8 +119,8 @@ class App extends React.Component {
           <Col>
 
             <ButtonToolbar>
-              <Button className="mr-2" variant="outline-info">Gerar Apresentação</Button>
-              <Button className="mr-2" variant="outline-success">Gerar Cifra</Button>
+              <Button className="mr-2" variant="outline-info" onClick={this.gerarPptX}>Gerar Apresentação</Button>
+              <Button className="mr-2" variant="outline-success" onClick={this.gerarDocX}>Gerar Cifra</Button>
             </ButtonToolbar>
 
           </Col>

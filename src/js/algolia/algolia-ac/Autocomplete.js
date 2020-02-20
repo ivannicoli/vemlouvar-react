@@ -35,7 +35,8 @@ class AutoComplete extends Component {
   };
 
   getSuggestionValue(hit) {
-    return hit.nome;
+    // return hit.nome;
+    return ""
   }
 
   renderSuggestion(hit) {

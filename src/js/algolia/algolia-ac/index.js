@@ -31,9 +31,9 @@ class App extends Component {
   };
 
   onSuggestionSelected = (_, { suggestion }) => {
-    this.setState({
-      query: suggestion.name,
-    });
+    // this.setState({
+    //   query: suggestion.name,
+    // });
     this.props.addMusica({
       nome: suggestion.nome,
       momento: suggestion.momento
@@ -59,11 +59,6 @@ class App extends Component {
                 onSuggestionCleared={this.onSuggestionCleared}
               />
             </InstantSearch>
-
-            {/* <InstantSearch indexName="musicas" searchClient={searchClient}>
-              <VirtalSearchBox defaultRefinement={query} />
-              <Hits hitComponent={Hit} />
-            </InstantSearch> */}
           </Col>
         </Row>
     );
