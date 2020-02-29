@@ -13,6 +13,7 @@ import MaterialTable from "material-table";
 import './themes/bootstrap.min-darkly.css';
 
 import GeradorPptx from "./js/classes/GerardorPptx"
+import GeradorDocx from "./js/classes/GerardorDocx"
 
 // import OfficeGenUtils from './js/utils/officegenUtils.js';
 
@@ -28,8 +29,7 @@ class App extends React.Component {
   }
 
   gerarDocX = () => {
-
-    alert("oi")
+    new GeradorDocx(this.state.musicas).gerarDocX();
 
   }
 
