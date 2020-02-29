@@ -5,7 +5,6 @@ export default class GeradorDocx {
   }
 
   gerarDocX = () => {
-    alert("vai fela")
     window.generate(this.musicas);
   } 
 }

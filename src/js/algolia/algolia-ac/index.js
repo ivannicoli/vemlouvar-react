@@ -37,7 +37,8 @@ class App extends Component {
     this.props.addMusica({
       nome: suggestion.nome,
       momento: suggestion.momento,
-      apresentacao: suggestion.apresentacao
+      apresentacao: suggestion.apresentacao,
+      cifra: suggestion.cifra
     });
   };
 

@@ -2,16 +2,13 @@ function loadFile(url, callback) {
   PizZipUtils.getBinaryContent(url, callback);
 }
 
-function generate() {
-  loadFile("https://docxtemplater.com/tag-example.docx", function (error, content) {
+function generate(musicas) {
+  loadFile("./template.docx", function (error, content) {
     if (error) { throw error };
     var zip = new PizZip(content);
     var doc = new window.docxtemplater().loadZip(zip)
     doc.setData({
-      first_name: 'John',
-      last_name: 'Doe',
-      phone: '0652455478',
-      description: 'New Website'
+      musicas: musicas
     });
     try {
       // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
