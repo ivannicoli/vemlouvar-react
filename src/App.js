@@ -33,7 +33,7 @@ class App extends React.Component {
 
   }
 
-  
+
   gerarPptX = () => {
     new GeradorPptx(this.state.musicas).gerarPptX();
   }
@@ -81,6 +81,11 @@ class App extends React.Component {
         <div style={{ maxWidth: "100%" }}>
           <MaterialTable
             columns={[
+              {
+                title: "Delete",
+                icon: 'save',
+                onClick: (event, rowData) => {}
+              },
               { title: "Nome", field: "nome" },
               { title: "Momento", field: "momento" }
             ]}
