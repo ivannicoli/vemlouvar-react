@@ -2,11 +2,18 @@ function loadFile(url, callback) {
   PizZipUtils.getBinaryContent(url, callback);
 }
 
+function replaceAll(str, find, replace) {
+  return str.replace(new RegExp(find, 'g'), replace);
+}
+
 function generate(musicas) {
   loadFile("./template.docx", function (error, content) {
     if (error) { throw error };
     var zip = new PizZip(content);
     var doc = new window.docxtemplater().loadZip(zip)
+    musicas.forEach(m => {
+      m.cifra=replaceAll(m.cifra, "\n", "\r\n")
+    });
     doc.setData({
       musicas: musicas
     });

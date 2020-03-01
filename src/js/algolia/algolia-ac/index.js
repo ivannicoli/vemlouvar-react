@@ -15,6 +15,7 @@ import {
 
 import Autocomplete from './Autocomplete';
 import './index.css';
+import FirestoreServices from '../../services/FirebaseServices'
 
 const VirtalSearchBox = connectSearchBox(() => null);
 
@@ -30,19 +31,10 @@ class App extends Component {
     query: '',
   };
 
-  onSuggestionSelected = (_, { suggestion }) => {
-    // this.setState({
-    //   query: suggestion.name,
-    // });
-    this.props.addMusica({
-      delete: {
-        icon: 'delete'
-      },
-      nome: suggestion.nome,
-      momento: suggestion.momento,
-      apresentacao: suggestion.apresentacao,
-      cifra: suggestion.cifra
-    });
+  onSuggestionSelected = async (_, { suggestion }) => {
+    let musica = (await FirestoreServices.getMusicaById(suggestion.id));
+    musica.momento = suggestion.momento
+    this.props.addMusica(musica)
   };
 
   onSuggestionCleared = () => {
