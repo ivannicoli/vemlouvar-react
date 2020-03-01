@@ -13,6 +13,7 @@ const config = {
 export const firebaseImpl = firebase.initializeApp(config);
 export const firestore = firebase.firestore();
 
+export const stateRef = firestore.collection("state");
 export const musicasRef = firestore.collection("musicas");
 export const momentosRef = firestore.collection("momentos");
 export const missasRef = firestore.collection("missas");

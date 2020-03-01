@@ -12,7 +12,7 @@ function generate(musicas) {
     var zip = new PizZip(content);
     var doc = new window.docxtemplater().loadZip(zip)
     musicas.forEach(m => {
-      m.cifra=replaceAll(m.cifra, "\n", "\r\n")
+      m.cifra = m.cifra.split("\n")
     });
     doc.setData({
       musicas: musicas

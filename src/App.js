@@ -14,6 +14,7 @@ import './themes/bootstrap.min-darkly.css';
 
 import GeradorPptx from "./js/classes/GerardorPptx"
 import GeradorDocx from "./js/classes/GerardorDocx"
+import FirebaseService from './js/services/FirebaseServices';
 
 // import OfficeGenUtils from './js/utils/officegenUtils.js';
 
@@ -22,7 +23,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
       musicas: []
     }
     this.addMusica.bind(this);
@@ -45,32 +45,35 @@ class App extends React.Component {
       ...this.state,
       musicas: arrMusicas
     })
+    this.handleChange()
   }
 
   paraCima = posicao => {
-    if(posicao==0)
+    if (posicao == 0)
       return;
     let arrMusicas = this.state.musicas;
     let tmp = arrMusicas[posicao]
-    arrMusicas[posicao] = arrMusicas[posicao-1];
-    arrMusicas[posicao-1] = tmp;
+    arrMusicas[posicao] = arrMusicas[posicao - 1];
+    arrMusicas[posicao - 1] = tmp;
     this.setState({
       ...this.state,
       musicas: arrMusicas
     })
+    this.handleChange()
   }
 
   paraBaixo = posicao => {
     let arrMusicas = this.state.musicas;
-    if(posicao==arrMusicas.length-1)
+    if (posicao == arrMusicas.length - 1)
       return;
     let tmp = arrMusicas[posicao]
-    arrMusicas[posicao] = arrMusicas[posicao+1];
-    arrMusicas[posicao+1] = tmp;
+    arrMusicas[posicao] = arrMusicas[posicao + 1];
+    arrMusicas[posicao + 1] = tmp;
     this.setState({
       ...this.state,
       musicas: arrMusicas
     })
+    this.handleChange()
   }
 
   addMusica = m => {
@@ -80,6 +83,15 @@ class App extends React.Component {
       ...this.state,
       musicas: arrMusicas
     })
+    this.handleChange()
+  }
+
+  async componentDidMount() {    
+    this.setState((await FirebaseService.getState()))
+  }
+
+  handleChange = () => {
+    FirebaseService.saveState(this.state)
   }
 
   render() {
@@ -146,18 +158,6 @@ class App extends React.Component {
               },
             ]}
             editable={{
-              isDeletable: false,
-              onRowAdd: newData =>
-                new Promise((resolve, reject) => {
-                  setTimeout(() => {
-                    {
-                      const data = this.state.musicas;
-                      data.push(newData);
-                      this.setState({ ...this.state, musicas: data }, () => resolve());
-                    }
-                    resolve()
-                  }, 1000)
-                }),
               onRowUpdate: (newData, oldData) =>
                 new Promise((resolve, reject) => {
                   setTimeout(() => {
@@ -169,6 +169,7 @@ class App extends React.Component {
                     }
                     resolve()
                   }, 1000)
+                  this.handleChange()
                 }),
             }}
           />
