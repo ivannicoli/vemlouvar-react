@@ -7,6 +7,7 @@ import {
   Button
 } from 'react-bootstrap';
 import AlgoliaSearch from './js/algolia/algolia-ac';
+import FormularioMusica from './js/formulario'
 
 import MaterialTable from "material-table";
 
@@ -38,8 +39,19 @@ class App extends React.Component {
     new GeradorPptx(this.state.musicas).gerarPptX();
   }
 
-  editarMusica = posicao => {
+  editar = posicao => {
+    let arrMusicas = this.state.musicas;
+    this.setState(
+      {
+        ...this.state,
+        momento: arrMusicas[posicao].momento,
+        cifra: arrMusicas[posicao].cifra,
+        apresentacao: arrMusicas[posicao].apresentacao,
+        nome: arrMusicas[posicao].nome
+      }
+    )
     
+
   }
 
   removeMusica = posicao => {
@@ -49,11 +61,11 @@ class App extends React.Component {
       ...this.state,
       musicas: arrMusicas
     })
-    this.handleChange()
+    this.handleChangeTable()
   }
 
   paraCima = posicao => {
-    if (posicao == 0)
+    if (posicao === 0)
       return;
     let arrMusicas = this.state.musicas;
     let tmp = arrMusicas[posicao]
@@ -63,12 +75,12 @@ class App extends React.Component {
       ...this.state,
       musicas: arrMusicas
     })
-    this.handleChange()
+    this.handleChangeTable()
   }
 
   paraBaixo = posicao => {
     let arrMusicas = this.state.musicas;
-    if (posicao == arrMusicas.length - 1)
+    if (posicao === arrMusicas.length - 1)
       return;
     let tmp = arrMusicas[posicao]
     arrMusicas[posicao] = arrMusicas[posicao + 1];
@@ -77,7 +89,7 @@ class App extends React.Component {
       ...this.state,
       musicas: arrMusicas
     })
-    this.handleChange()
+    this.handleChangeTable()
   }
 
   addMusica = m => {
@@ -87,14 +99,14 @@ class App extends React.Component {
       ...this.state,
       musicas: arrMusicas
     })
-    this.handleChange()
+    this.handleChangeTable()
   }
 
   async componentDidMount() {
     this.setState((await FirebaseService.getState()))
   }
 
-  handleChange = () => {
+  handleChangeTable = () => {
     FirebaseService.saveState(this.state)
   }
 
@@ -143,7 +155,7 @@ class App extends React.Component {
                 icon: 'edit',
                 tooltip: 'Editar',
                 onClick: (event, rowData) => {
-                  
+                  this.editar(rowData.tableData.id)
                 }
               },
               {
@@ -180,7 +192,7 @@ class App extends React.Component {
                     }
                     resolve()
                   }, 1000)
-                  this.handleChange()
+                  this.handleChangeTable()
                 }),
             }}
           />
@@ -198,77 +210,17 @@ class App extends React.Component {
             <ButtonToolbar>
               <Button className="mr-2" variant="outline-info" onClick={this.gerarPptX}>Gerar Apresentação</Button>
               <Button className="mr-2" variant="outline-success" onClick={this.gerarDocX}>Gerar Cifra</Button>
-              <Button className="mr-2" variant="outline-warning" onClick={this.gerarPptX}>Salvar</Button>
-              <Button className="mr-2" variant="outline-danger" onClick={this.gerarPptX}>Excluir</Button>
             </ButtonToolbar>
 
           </Col>
         </Row>
 
-        <Row >
-          <Col>
-            <Form.Label>&nbsp;</Form.Label>
-          </Col>
-        </Row>
+        <FormularioMusica 
+          momento={this.state.momento}
+          nome={this.state.nome}
+          cifra={this.state.cifra}
+          apresentacao={this.state.apresentacao} />
 
-        <Row>
-          <Col sm>
-
-            <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Nome</Form.Label>
-              <Form.Control aria-label="Nome" />
-            </Form.Group>
-          </Col>
-          <Col sm>
-
-            <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Momento</Form.Label>
-              <Form.Control as="select">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </Form.Control>
-            </Form.Group>
-          </Col>
-
-        </Row>
-
-        <Row>
-          <Col sm>
-
-            <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Cifra</Form.Label>
-              <Form.Control as="textarea" rows="5" />
-            </Form.Group>
-          </Col>
-          <Col sm>
-
-            <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Apresentação</Form.Label>
-              <Form.Control as="textarea" rows="5" />
-            </Form.Group>
-          </Col>
-
-        </Row>
-
-        {/* <Row >
-          <Col>
-            <Form.Label>&nbsp;</Form.Label>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
-
-            <ButtonToolbar>
-              <Button className="mr-2" variant="outline-danger" onClick={this.gerarPptX}>Salvar</Button>
-              <Button className="mr-2" variant="outline-danger" onClick={this.gerarPptX}>Excluir</Button>
-            </ButtonToolbar>
-
-          </Col>
-        </Row> */}
       </Container >
     );
   }

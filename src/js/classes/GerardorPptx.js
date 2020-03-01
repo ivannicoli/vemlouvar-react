@@ -38,7 +38,7 @@ export default class GeradorPptx {
     text = text.trim();
     let numChar = text.length
     let txtColor;
-    if (numChar == 0) {
+    if (numChar === 0) {
       // continue loop linha vazia
       return
     }
