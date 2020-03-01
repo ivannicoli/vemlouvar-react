@@ -38,6 +38,10 @@ class App extends React.Component {
     new GeradorPptx(this.state.musicas).gerarPptX();
   }
 
+  editarMusica = posicao => {
+    
+  }
+
   removeMusica = posicao => {
     let arrMusicas = this.state.musicas;
     arrMusicas.splice(posicao, 1);
@@ -86,7 +90,7 @@ class App extends React.Component {
     this.handleChange()
   }
 
-  async componentDidMount() {    
+  async componentDidMount() {
     this.setState((await FirebaseService.getState()))
   }
 
@@ -136,6 +140,13 @@ class App extends React.Component {
             title="Missa"
             actions={[
               {
+                icon: 'edit',
+                tooltip: 'Editar',
+                onClick: (event, rowData) => {
+                  
+                }
+              },
+              {
                 icon: 'delete',
                 tooltip: 'Delete Música',
                 onClick: (event, rowData) => {
@@ -175,6 +186,55 @@ class App extends React.Component {
           />
         </div>
 
+        <Row >
+          <Col>
+            <Form.Label>&nbsp;</Form.Label>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+
+            <ButtonToolbar>
+              <Button className="mr-2" variant="outline-info" onClick={this.gerarPptX}>Gerar Apresentação</Button>
+              <Button className="mr-2" variant="outline-success" onClick={this.gerarDocX}>Gerar Cifra</Button>
+              <Button className="mr-2" variant="outline-warning" onClick={this.gerarPptX}>Salvar</Button>
+              <Button className="mr-2" variant="outline-danger" onClick={this.gerarPptX}>Excluir</Button>
+            </ButtonToolbar>
+
+          </Col>
+        </Row>
+
+        <Row >
+          <Col>
+            <Form.Label>&nbsp;</Form.Label>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col sm>
+
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+              <Form.Label>Nome</Form.Label>
+              <Form.Control aria-label="Nome" />
+            </Form.Group>
+          </Col>
+          <Col sm>
+
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+              <Form.Label>Momento</Form.Label>
+              <Form.Control as="select">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </Form.Control>
+            </Form.Group>
+          </Col>
+
+        </Row>
+
         <Row>
           <Col sm>
 
@@ -193,22 +253,22 @@ class App extends React.Component {
 
         </Row>
 
-        <Row>
-          <Col>
-
-            <ButtonToolbar>
-              <Button className="mr-2" variant="outline-info" onClick={this.gerarPptX}>Gerar Apresentação</Button>
-              <Button className="mr-2" variant="outline-success" onClick={this.gerarDocX}>Gerar Cifra</Button>
-            </ButtonToolbar>
-
-          </Col>
-        </Row>
-
-        <Row >
+        {/* <Row >
           <Col>
             <Form.Label>&nbsp;</Form.Label>
           </Col>
         </Row>
+
+        <Row>
+          <Col>
+
+            <ButtonToolbar>
+              <Button className="mr-2" variant="outline-danger" onClick={this.gerarPptX}>Salvar</Button>
+              <Button className="mr-2" variant="outline-danger" onClick={this.gerarPptX}>Excluir</Button>
+            </ButtonToolbar>
+
+          </Col>
+        </Row> */}
       </Container >
     );
   }
