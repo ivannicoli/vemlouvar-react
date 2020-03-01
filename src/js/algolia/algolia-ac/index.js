@@ -35,6 +35,9 @@ class App extends Component {
     //   query: suggestion.name,
     // });
     this.props.addMusica({
+      delete: {
+        icon: 'delete'
+      },
       nome: suggestion.nome,
       momento: suggestion.momento,
       apresentacao: suggestion.apresentacao,

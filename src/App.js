@@ -38,10 +38,46 @@ class App extends React.Component {
     new GeradorPptx(this.state.musicas).gerarPptX();
   }
 
+  removeMusica = posicao => {
+    let arrMusicas = this.state.musicas;
+    arrMusicas.splice(posicao, 1);
+    this.setState({
+      ...this.state,
+      musicas: arrMusicas
+    })
+  }
+
+  paraCima = posicao => {
+    if(posicao==0)
+      return;
+    let arrMusicas = this.state.musicas;
+    let tmp = arrMusicas[posicao]
+    arrMusicas[posicao] = arrMusicas[posicao-1];
+    arrMusicas[posicao-1] = tmp;
+    this.setState({
+      ...this.state,
+      musicas: arrMusicas
+    })
+  }
+
+  paraBaixo = posicao => {
+    let arrMusicas = this.state.musicas;
+    if(posicao==arrMusicas.length-1)
+      return;
+    let tmp = arrMusicas[posicao]
+    arrMusicas[posicao] = arrMusicas[posicao+1];
+    arrMusicas[posicao+1] = tmp;
+    this.setState({
+      ...this.state,
+      musicas: arrMusicas
+    })
+  }
+
   addMusica = m => {
-    var arrMusicas = this.state.musicas;
+    let arrMusicas = this.state.musicas;
     arrMusicas.push(m)
     this.setState({
+      ...this.state,
       musicas: arrMusicas
     })
   }
@@ -81,16 +117,60 @@ class App extends React.Component {
         <div style={{ maxWidth: "100%" }}>
           <MaterialTable
             columns={[
-              {
-                title: "Delete",
-                icon: 'save',
-                onClick: (event, rowData) => {}
-              },
-              { title: "Nome", field: "nome" },
-              { title: "Momento", field: "momento" }
+              { title: "Momento", field: "momento" },
+              { title: "Nome", field: "nome" }
             ]}
             data={this.state.musicas}
             title="Missa"
+            actions={[
+              {
+                icon: 'delete',
+                tooltip: 'Delete Música',
+                onClick: (event, rowData) => {
+                  this.removeMusica(rowData.tableData.id)
+                }
+              },
+              {
+                icon: 'keyboard_arrow_up',
+                tooltip: 'Para Cima',
+                onClick: (event, rowData) => {
+                  this.paraCima(rowData.tableData.id)
+                }
+              },
+              {
+                icon: 'keyboard_arrow_down',
+                tooltip: 'Para Baixo',
+                onClick: (event, rowData) => {
+                  this.paraBaixo(rowData.tableData.id)
+                }
+              },
+            ]}
+            editable={{
+              isDeletable: false,
+              onRowAdd: newData =>
+                new Promise((resolve, reject) => {
+                  setTimeout(() => {
+                    {
+                      const data = this.state.musicas;
+                      data.push(newData);
+                      this.setState({ ...this.state, musicas: data }, () => resolve());
+                    }
+                    resolve()
+                  }, 1000)
+                }),
+              onRowUpdate: (newData, oldData) =>
+                new Promise((resolve, reject) => {
+                  setTimeout(() => {
+                    {
+                      const data = this.state.musicas;
+                      const index = data.indexOf(oldData);
+                      data[index] = newData;
+                      this.setState({ ...this.state, musicas: data }, () => resolve());
+                    }
+                    resolve()
+                  }, 1000)
+                }),
+            }}
           />
         </div>
 
