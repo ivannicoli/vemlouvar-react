@@ -44,10 +44,11 @@ class App extends React.Component {
     this.setState(
       {
         ...this.state,
+        id: arrMusicas[posicao].id,
+        nome: arrMusicas[posicao].nome,
         momento: arrMusicas[posicao].momento,
         cifra: arrMusicas[posicao].cifra,
-        apresentacao: arrMusicas[posicao].apresentacao,
-        nome: arrMusicas[posicao].nome
+        apresentacao: arrMusicas[posicao].apresentacao
       }
     )
     
@@ -216,8 +217,9 @@ class App extends React.Component {
         </Row>
 
         <FormularioMusica 
-          momento={this.state.momento}
+          id={this.state.id}
           nome={this.state.nome}
+          momento={this.state.momento}
           cifra={this.state.cifra}
           apresentacao={this.state.apresentacao} />
 
