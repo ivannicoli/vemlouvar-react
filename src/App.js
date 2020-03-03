@@ -48,11 +48,22 @@ class App extends React.Component {
         nome: arrMusicas[posicao].nome,
         momento: arrMusicas[posicao].momento,
         cifra: arrMusicas[posicao].cifra,
-        apresentacao: arrMusicas[posicao].apresentacao
+        apresentacao: arrMusicas[posicao].apresentacao,
+        posicao: posicao
       }
     )
-    
+  }
 
+  salvar = (posicao, m) => {
+    let arrMusicas = this.state.musicas;
+    arrMusicas[posicao] = m;
+    this.setState(
+      {
+        ...this.state,
+        musicas: arrMusicas
+      }
+    )
+    this.handleChangeTable()
   }
 
   removeMusica = posicao => {
@@ -221,7 +232,8 @@ class App extends React.Component {
           nome={this.state.nome}
           momento={this.state.momento}
           cifra={this.state.cifra}
-          apresentacao={this.state.apresentacao} />
+          apresentacao={this.state.apresentacao}
+          salvar={this.salvar} />
 
       </Container >
     );

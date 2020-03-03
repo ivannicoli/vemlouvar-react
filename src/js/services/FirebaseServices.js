@@ -36,13 +36,14 @@ export default class FirebaseService {
   static saveMusica = (m) => {
     if(m !== ""){
       musicasRef.doc(m.id).set(m)
+    
+      m.objectID = m.id;
+      algoliaMusicasIndex.saveObject(m);
+      alert("Música Salva")
     } else {
       // musicasRef.push(m)
+      alert("Not Implemented")
     }
-    
-    m.objectID = m.id;
-    algoliaMusicasIndex.saveObject(m);
-    alert("Música Salva")
   }
 
 }

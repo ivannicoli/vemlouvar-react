@@ -53,6 +53,7 @@ class CadastroMusica extends React.Component {
       apresentacao: this.state.apresentacao
     }
     FirebaseService.saveMusica(musica)
+    this.props.salvar()
   }
 
   render() {

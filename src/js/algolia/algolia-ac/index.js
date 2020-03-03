@@ -33,7 +33,6 @@ class App extends Component {
 
   onSuggestionSelected = async (_, { suggestion }) => {
     let musica = (await FirestoreServices.getMusicaById(suggestion.id));
-    musica.momento = suggestion.momento
     this.props.addMusica(musica)
   };
 
