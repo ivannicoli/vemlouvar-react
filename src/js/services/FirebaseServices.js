@@ -1,4 +1,8 @@
 import { musicasRef, momentosRef, stateRef } from '../utils/FirebaseUtils'
+import algoliasearch from 'algoliasearch';
+
+const client = algoliasearch('EZQCIMR39C', '335d5086d62e00ab7fda52e8df0cae83');
+const algoliaMusicasIndex = client.initIndex('musicas');
 
 export default class FirebaseService {
 
@@ -27,6 +31,18 @@ export default class FirebaseService {
         momentosArr.push(m.data().nome);
     });
     return momentosArr;
+  }
+
+  static saveMusica = (m) => {
+    if(m !== ""){
+      musicasRef.doc(m.id).set(m)
+    } else {
+      // musicasRef.push(m)
+    }
+    
+    m.objectID = m.id;
+    algoliaMusicasIndex.saveObject(m);
+    alert("Música Salva")
   }
 
 }

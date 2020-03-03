@@ -45,7 +45,14 @@ class CadastroMusica extends React.Component {
   }
 
   handleSubmit = (event) => {
-    alert('Um nome foi enviado: ' + this.state.nome);
+    let musica = {
+      id: this.state.id,
+      nome: this.state.nome,
+      momento: this.state.momento,
+      cifra: this.state.cifra,
+      apresentacao: this.state.apresentacao
+    }
+    FirebaseService.saveMusica(musica)
   }
 
   render() {
