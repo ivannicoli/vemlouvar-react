@@ -10,7 +10,7 @@
     "algoliasearch": "^3.35.1",
     "bootstrap": "^4.4.1",
     "docxtemplater": "^3.16.11",
-    "firebase": "^7.9.3",
+    "firebase": "^10.9.0",
     "fs": "0.0.1-security",
     "jquery": "^3.4.1",
     "material-table": "^1.57.2",
